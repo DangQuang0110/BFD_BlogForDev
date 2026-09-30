@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #fcedd0;
+}
+/*HEADER*/
+.first_head{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.headerContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.headerContainer ul {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.headerContainer .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;                 /* khoảng cách giữa icon và chữ */
+  text-decoration: none;    /* bỏ gạch chân link */
+  color: #222;
+  padding: 10px 14px;
+}
+
+.headerContainer .nav-link:hover {
+  color: #e94560;
+}
