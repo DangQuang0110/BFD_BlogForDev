@@ -22,19 +22,19 @@ app.get("/contacts",(req, res)=>{
 app.get("/about",(req, res)=>{
     res.render("aboutMe.ejs");
 })
-app.get("/addblog",(req, res)=>{
-    res.render("addBlog.ejs");
-})
+// app.get("/addblog",(req, res)=>{
+//     res.render("addBlog.ejs");
+// })
 
 //Add Blogs
 app.post("/addblog", (req, res)=>{
-    const {title, author, content, picture} = req.body;
+    const {title, author, content, image} = req.body;
     blogStorage.push({
         id: blogStorage.length + 1,
         title,
         author,
         content,
-        picture,
+        image,
     });
     res.redirect("/blogs");
     console.log(blogStorage);
