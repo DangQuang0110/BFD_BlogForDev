@@ -1,0 +1,18 @@
+<%- include("partials/header.ejs")%>
+
+<body>
+    <main class="blog-detail">
+  <a href="/blogs" class="back-link">← Quay lại danh sách</a>
+
+  <article>
+    <h1><%= blog.title %></h1>
+    <p class="author">Tác giả: <%= blog.author %></p>
+
+    <% if (blog.image) { %>
+      <img src="<%= blog.image %>" alt="<%= blog.title %>" class="bannerImage">
+    <% } %>
+
+    <div class="full-content"><%= blog.content %></div>
+  </article>
+</main>
+</body>

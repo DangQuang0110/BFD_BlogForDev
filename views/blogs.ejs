@@ -1,1 +1,27 @@
 <%- include("partials/header.ejs")%>
+
+    <body>
+        <section class="blog-list">
+            <% if (blogs.length===0) { %>
+                <p>Chưa có bài viết nào.</p>
+                <% } else { %>
+                    <% blogs.forEach((blog)=> { %>
+                        <a href="/blogs/<%= blog.id %>" class="blog-link">
+                            <article class="blog-card">
+                                <% if (blog.image) { %>
+                                    <img src="<%= blog.image %>" alt="<%= blog.title %>" class="bannerImage">
+                                    <% } %>
+                                        <h2>
+                                            <%= blog.title %>
+                                        </h2>
+                                        <p class="author">Tác giả: <%= blog.author %>
+                                        </p>
+                                        <p class="excerpt">
+                                            <%= blog.content %>
+                                        </p>
+                            </article>
+                        </a>
+                        <% }) %>
+                            <% } %>
+        </section>
+    </body>
