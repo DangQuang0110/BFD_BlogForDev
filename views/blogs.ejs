@@ -1,27 +1,63 @@
-<%- include("partials/header.ejs")%>
+<%- include("partials/header.ejs") %>
 
-    <body>
-        <section class="blog-list">
-            <% if (blogs.length===0) { %>
-                <p>Chưa có bài viết nào.</p>
-                <% } else { %>
-                    <% blogs.forEach((blog)=> { %>
-                        <a href="/blogs/<%= blog.id %>" class="blog-link">
-                            <article class="blog-card">
-                                <% if (blog.image) { %>
-                                    <img src="<%= blog.image %>" alt="<%= blog.title %>" class="bannerImage">
-                                    <% } %>
-                                        <h2>
-                                            <%= blog.title %>
-                                        </h2>
-                                        <p class="author">Tác giả: <%= blog.author %>
-                                        </p>
-                                        <p class="excerpt">
-                                            <%= blog.content %>
-                                        </p>
-                            </article>
-                        </a>
-                        <% }) %>
-                            <% } %>
-        </section>
-    </body>
+<body>
+    <section class="blog-list">
+        <% if (blogs.length === 0) { %>
+            <p>Chưa có bài viết nào.</p>
+        <% } else { %>
+            <% blogs.forEach((blog) => { %>
+    <article class="blog-card">
+        <a href="/blogs/<%= blog.id %>" class="blog-link">
+            <% if (blog.image) { %>
+                <img src="<%= blog.image %>" alt="<%= blog.title %>" class="bannerImage">
+            <% } %>
+            <h2><%= blog.title %></h2>
+            <p class="author">Tác giả: <%= blog.author %></p>
+            <p class="excerpt"><%= blog.content %></p>
+        </a>
+
+        <div class="blog-actions">
+            <button type="button" class="btn-update" data-id="<%= blog.id %>">Update blog</button>
+            <button type="button" class="btn-delete" data-id="<%= blog.id %>">Delete blog</button>
+        </div>
+    </article>
+<% }) %>
+        <% } %>
+    </section>
+
+    <!-- Một dialog dùng chung cho mọi bài -->
+    <dialog id="updateDialog">
+        <form id="updateForm">
+            <h2>Update Blog</h2>
+
+            <div>
+                <label for="updateTitle">Title</label>
+                <input type="text" id="updateTitle" name="title" required>
+            </div>
+
+            <div>
+                <label for="updateAuthor">Author</label>
+                <input type="text" id="updateAuthor" name="author" required>
+            </div>
+
+            <div>
+                <label for="updateContent">Content</label>
+                <textarea id="updateContent" name="content" rows="6" required></textarea>
+            </div>
+
+            <div>
+                <label for="updateImage">Picture URL</label>
+                <input type="url" id="updateImage" name="image" placeholder="https://...">
+            </div>
+
+            <div class="actions">
+                <button type="submit">Save</button>
+                <button type="button" id="closeUpdate">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+
+<script>
+    
+</script>
