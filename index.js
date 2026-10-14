@@ -67,34 +67,32 @@ app.get("/api/blogs/:id", (req, res) => {
 
     res.json(blog);
 });
-
-app.put("/api/blogs/:id", (req, res) => {
+// update post
+app.put("/api/blogs/:id",(req, res)=>{
     const blog = blogStorage.find(b => b.id === Number(req.params.id));
-
-    if (!blog) {
-        return res.status(404).json({ message: "Không tìm thấy bài viết" });
+    if(!blog){
+        return res.status(404).json({message:"Không tìm thấy bài viết"});
     }
 
-    const { title, author, content, image } = req.body;
-
-    if (title !== undefined) blog.title = title;
-    if (author !== undefined) blog.author = author;
-    if (content !== undefined) blog.content = content;
-    if (image !== undefined) blog.image = image;
+    const { title, author, content, image} = req.body;
+    if(title !== undefined) blog.title = title;
+    if(author !== undefined) blog.author = author;
+    if(content !== undefined) blog.content = content;
+    if(image !== undefined) blog.image = image;
 
     res.json(blog);
+    console.log(blog);
 });
+// app.delete("/api/blogs/:id", (req, res) => {
+//     const index = blogStorage.findIndex(b => b.id === Number(req.params.id));
 
-app.delete("/api/blogs/:id", (req, res) => {
-    const index = blogStorage.findIndex(b => b.id === Number(req.params.id));
+//     if (index === -1) {
+//         return res.status(404).json({ message: "Không tìm thấy bài viết" });
+//     }
 
-    if (index === -1) {
-        return res.status(404).json({ message: "Không tìm thấy bài viết" });
-    }
-
-    const [removed] = blogStorage.splice(index, 1);
-    res.json({ message: "Đã xóa", blog: removed });
-});
+//     const [removed] = blogStorage.splice(index, 1);
+//     res.json({ message: "Đã xóa", blog: removed });
+// });
 
 app.listen(port, () => {
     console.log(`Server is running on ${port}`);
